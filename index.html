@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>USHistory-Trivia Game</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
     
     <h1>Trivia Game</h1>
     <div id="stopwatch"><h2>45</h2></div>
-    <div id="question"></div>
+    <div id="question">Click Here to start</div>
     <div id="answer0" class="button"></div>
     <div id="answer1" class="button"></div>
     <div id="answer2" class="button"></div>
     <div id="answer3" class="button"></div>
     <div id="next"></div>
+    <div id="restart"></div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -24,6 +25,7 @@
         var x = 0
         //wins variable
         var wins = 0
+        var counter = 0
         //objects with questions and answers
         var Questions = [
             question1 = { 
@@ -67,11 +69,110 @@
                 CorrectAnswer : "Queen Elizabeth"
             },    
             question9 = {
-                Question : "What Texas city witnessed the assasination of President Kennedy",
+                Question : "What Texas city witnessed the assasination of President Kennedy?",
                 Answers : ["Dallas", "Houston", "San Antonio", "Corpus Christi"],
                 CorrectAnswer : "Dallas"
-            },           
-
+            },    
+            question10 = {
+                Question : "What country did the United States buy the Louisiana Purchase from?",
+                Answers : ["Spain", "Great Britian", "France", "Japan"],
+                CorrectAnswer : "France"
+            }, 
+            question11 = {
+                Question : "How many people are estimated to have lived in the modern day United States before the arrival of the first European settlers?",
+                Answers : ["Less than 2 million", "Between 2 and 10 million", "Between 8 and 12 million", "About 100 million"],
+                CorrectAnswer : "Between 2 and 10 million"
+            }, 
+            question12 = {
+                Question : "What was the first successful English colony in the United States?",
+                Answers : ["Roanoke Island Colony", "Jamestown, Virginia", "Massachussetts Bay Colony", "Plymouth"],
+                CorrectAnswer : "Jamestown, Virginia"
+            },
+            question13 = {
+                Question : "Who did Pocahontas marry?",
+                Answers : ["John Smith", "John Rolfe", "Powhatan", "She did not marry"],
+                CorrectAnswer : "John Rolfe"
+            },  
+            question14 = {
+                Question : "Who was the first president to live in the White House?",
+                Answers : ["John Adams", "George Washington", "Thomas Jefferson", "Ronald Reagan"],
+                CorrectAnswer : "John Adams"
+            },
+            question15 = {
+                Question : "What was the original name of New York?",
+                Answers : ["New Amsterdam", "New London", "Birmingham", "Hudson"],
+                CorrectAnswer : "New Amsterdam"
+            },
+            question16 = {
+                Question : "How many people died at the Salem Witch Trials?",
+                Answers : ["19", "200", "4", "36"],
+                CorrectAnswer : "19"
+            },
+            question17 = {
+                Question : "What is another name for the Seven Years War?",
+                Answers : ["French and Indian War", "North American War", "The Revolutionary War", "The Korean War"],
+                CorrectAnswer : "French and Indian War"
+            },
+            question18 = {
+                Question : "What natural landmark defined the Proclamation Line of 1763?",
+                Answers : ["The Appalachian Mountains", "The Mississippi River", "The Ohio River", "The Catskills"],
+                CorrectAnswer : "The Appalachian Mountains"
+            },
+            question19 = {
+                Question : "How many people were put on trial due to the Boston Massacre?",
+                Answers : ["9", "11", "0", "456"],
+                CorrectAnswer : "9"
+            },
+            question20 = {
+                Question : "Calculating for inflation what is the montary loss cuased by the Boston Tea Party?",
+                Answers : ["$4 Million", "$5000,000", "$1 Million", "$5.5 Million"],
+                CorrectAnswer : "$4 Million"
+            },
+            question21 = {
+                Question : "What Colony did not send delegates to the first Continental Congress?",
+                Answers : ["New Hampshire", "South Carolina", "Texas", "Georgia"],
+                CorrectAnswer : "Georgia"
+            },
+            question22 = {
+                Question : "Who wrote the influential pamphlet Common Sense?",
+                Answers : ["Thomas Paine", "Alexander Hamilton", "Thomas Jefferson", "William Bakersfield"],
+                CorrectAnswer : "Thomas Paine"
+            },
+            question23 = {
+                Question : "What inalienable rights are specifically mentioned in the Declaration of Idependence?",
+                Answers : ["Life, Liberty and the Pursuit of Happiness", "Life, Liberty and Property", "Freedom, Happiness and Justice", "Life, Liberty and Happiness"],
+                CorrectAnswer : "Life, Liberty and the Pursuit of Happiness"
+            },
+            question24 = {
+                Question : "What battle ended the War of Independence?",
+                Answers : ["Battle of Yorktown", "Battle of Western Kansas", "Battle of Saratoga", "The Battle of Monmouth"],
+                CorrectAnswer : "Battle of Yorktown"
+            },
+            question25 = {
+                Question : "Who was the first woman on the Supreme Court?",
+                Answers : ["Sandra Day O'Connor", "Hillary Clinton", "Ruth Bader Ginsburg", "Samantha Cunningham"],
+                CorrectAnswer : "Sandra Day O'Connor"
+            },
+            question26 = {
+                Question : "What state elected the first African American Senator?",
+                Answers : ["New York", "Montana", "Tennessee", "Mississippi"],
+                CorrectAnswer : "Mississippi"
+            },
+            question27 = {
+                Question : "What was the greatest flaw in the Articles of Confederation?",
+                Answers : ["The government had no ability to collect revenue", "The government could not declare war", "All of the Above", "It did not have a regular place to meet"],
+                CorrectAnswer : "The government had no ability to collect revenue"
+            },
+            question28 = {
+                Question : "What was the first state to ratify the constitution?",
+                Answers : ["Delaware", "Alaska", "Connecticut", "Virginia"],
+                CorrectAnswer : "Delaware"
+            },
+            question29 ={
+                Question : "Who wrote the Federalist Papers?",
+                Answers : ["John Jay", "Alexander Hamilton", "James Madison", "All of the above"],
+                CorrectAnswer : "All of the above"
+            },
         ]
 
     //function to randomize order of questions and answers. 
@@ -90,11 +191,11 @@
     return array;
     }
     // Shuffle Questions
-    shuffle(Questions)
+    // shuffle(Questions)
 
-    console.log(Questions[x].Question)
-    console.log(Questions[x].Answers)
-    console.log(Questions[x].CorrectAnswer)
+    // console.log(Questions[x].Question)
+    // console.log(Questions[x].Answers)
+    // console.log(Questions[x].CorrectAnswer)
 
     //Functoin to push question and answer 
     function push(){
@@ -106,9 +207,14 @@
         $("#answer1").text(Questions[x].Answers[1]);
         $("#answer2").text(Questions[x].Answers[2]);
         $("#answer3").text(Questions[x].Answers[3]);
+        console.log(Questions[x].Question)
+        console.log(Questions[x].Answers)
+        console.log(Questions[x].CorrectAnswer)
+
     }
+
     // Run function for question 1
-    push()
+    // push()
 
     var time = 45
     var interval;
@@ -125,12 +231,34 @@
       $("#stopwatch").html("<h2>" + time + "</h2>");
       //  When you time = 0
       if (time === 0) {
-        clearInterval(interval);
-        console.log("Time Up!");
+      //add green background to the correct answer
+            //find right answer and store it in var correct
+            var correct = Questions[x].Answers.indexOf(Questions[x].CorrectAnswer)
+            console.log(Questions[x].Answers)
+            console.log(correct)
+        //add green background
+        $("#answer" + correct).addClass("greenbg")
+        // clearInterval(interval);
+        // console.log("Time Up!");
+        finishturn()
       }
     }
+    
+    //function to start and restart game
+    function start(){
+        console.log("startgame")
+        shuffle(Questions)
+        console.log(Questions)
+        push()
+        timer()
+    }
+
+    //button to start the game
+    $("#question").on("click", function(){
+        start()
+    })
     // Run timer Function. 
-    timer()
+    // timer()
 
     // Things that happen when you end a turn regardless of if you win or loose. 
     function finishturn(){
@@ -138,14 +266,18 @@
         clearInterval(interval)
         //add to x
         x++
+        console.log("x is now " + x)
         //push next button
         $("#next").text("NEXT");
+        //increase counter by 1
+        counter++
+        console.log("counter is now " + counter)
     }
     // On Click function for answers
     $(".button").on("click", function(){
-        console.log($(this).html())
-        console.log(Questions[x].CorrectAnswer)
-        console.log(this)
+        console.log("You selected" + $(this).html())
+        // console.log(Questions[x].CorrectAnswer)
+        // console.log(this)
 
         //if you are right:
         if ($(this).html() === Questions[x].CorrectAnswer){
@@ -158,7 +290,6 @@
         $(this).addClass("greenbg")
         //Call function finish turn
         finishturn()
-        console.log("x is now " + x)
         }
         //if you are wrong 
         else{
@@ -172,11 +303,11 @@
         $("#answer" + correct).addClass("greenbg")
         //Call function finish turn
         finishturn()
-        console.log("x is now " + x)
         }
     })
 
-  //function to reset the game
+
+    //function to reset the question
     function reset(){
         $(".button").removeClass("greenbg")
         $(".button").removeClass("redbg")
@@ -186,11 +317,32 @@
         timer()
     }
 
+    //When you click the next button
     $("#next").on("click", function(){
-        reset()
+        if(counter === 20){
+            console.log("Your Score: " + wins + "/" + counter);
+            $("#question").text("Your Score: " + wins + "/" + counter);
+            $(".button").empty()
+            counter = 0
+            $("#restart").text("RESTART");
+            $("#stopwatch").empty()
+            $("#next").empty()
+        }
+        else{
+            reset()
+            $("#next").empty()
+        }
     })
-
-
+    //Button to restart the game
+    $("#restart").on("click", function(){
+        x = 0
+        counter = 0
+        $("#restart").empty()
+        $(".button").removeClass("greenbg")
+        $(".button").removeClass("redbg")
+        shuffle(Questions)
+        start()
+    })
     </script>
 </body>
 </html>
