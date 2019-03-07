@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+    
+    <h1>Trivia Game</h1>
+    <div id="stopwatch"><h2>45</h2></div>
+    <div id="question"></div>
+    <div id="answer0" class="button"></div>
+    <div id="answer1" class="button"></div>
+    <div id="answer2" class="button"></div>
+    <div id="answer3" class="button"></div>
+    <div id="next"></div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+        //selector variable
+        var x = 0
+        //wins variable
+        var wins = 0
+        //objects with questions and answers
+        var Questions = [
+            question1 = { 
+                Question: "Where did the Battle of Gettysburg happen?",
+                Answers: ["Gettysburg, Virginia", "Gettysburg, Maryland" , "Gettysburg, Colorado" , "Gettysburg, Pennsylvania",],
+                CorrectAnswer: "Gettysburg, Pennsylvania",
+                },
+            question2 = {
+                Question: "Who was the first president of the United States?",
+                Answers: ["George Washington","Alexander Hamilton","Thomas Jefferson", "Abraham Lincoln"],
+                CorrectAnswer: "George Washington"
+            },
+            question3 = {
+                Question: "What American was the world's first billionaire?",
+                Answers: ["John D Rockefeller", "Andrew Carnegie", "Bill Gates", "Thomas Edison"],
+                CorrectAnswer: "John D Rockefeller"
+            },
+            question4 = {
+                Question : "What was the 14th state admitted into the union?",
+                Answers : ["Montana", "Rhode Island", "Kentucky", "Vermont"],
+                CorrectAnswer: "Vermont"
+            },
+            question5 = {
+                Question : "What is the largest Native American Reservation in the United States?",
+                Answers : ["Navajo Nation", "Wamapoke", "Wind River", "Cherokee"],
+                CorrectAnswer: "Navajo Nation"
+            },
+            question6 = {
+                Question : "What state was an internationally recognized republic before joining the United States?",
+                Answers : ["Texas", "Hawaii", "Vermont", "All of the above"],
+                CorrectAnswer: "All of the above"
+            },
+            question7 = {
+                Question : "What was the first state to secede from the union?",
+                Answers : ["South Carolina", "Alabama", "Virginia", "New Hampshire"],
+                CorrectAnswer : "South Carolina"
+            },
+            question8 = {
+                Question : "For whom is the state of Virginia named?",
+                Answers : ["Queen Virginia", "Queen Mary", "Queen Elizabeth", "Virginia Washington"],
+                CorrectAnswer : "Queen Elizabeth"
+            },    
+            question9 = {
+                Question : "What Texas city witnessed the assasination of President Kennedy",
+                Answers : ["Dallas", "Houston", "San Antonio", "Corpus Christi"],
+                CorrectAnswer : "Dallas"
+            },           
+
+        ]
+
+    //function to randomize order of questions and answers. 
+    function shuffle(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+    return array;
+    }
+    // Shuffle Questions
+    shuffle(Questions)
+
+    console.log(Questions[x].Question)
+    console.log(Questions[x].Answers)
+    console.log(Questions[x].CorrectAnswer)
+
+    //Functoin to push question and answer 
+    function push(){
+        // Shuffle Answers
+        shuffle(Questions[x].Answers)
+        // Push answers to page
+        $("#question").text(Questions[x].Question);
+        $("#answer0").text(Questions[x].Answers[0]);
+        $("#answer1").text(Questions[x].Answers[1]);
+        $("#answer2").text(Questions[x].Answers[2]);
+        $("#answer3").text(Questions[x].Answers[3]);
+    }
+    // Run function for question 1
+    push()
+
+    var time = 45
+    var interval;
+    // Function to start timer
+    function timer() {
+      clearInterval(interval);
+      interval = setInterval(decrement, 1000);
+    }
+    //  The lessen Function
+    function decrement() {
+      //  Decrease time by one
+      time--;
+      //  Display it
+      $("#stopwatch").html("<h2>" + time + "</h2>");
+      //  When you time = 0
+      if (time === 0) {
+        clearInterval(interval);
+        console.log("Time Up!");
+      }
+    }
+    // Run timer Function. 
+    timer()
+
+    // Things that happen when you end a turn regardless of if you win or loose. 
+    function finishturn(){
+        //stop timer
+        clearInterval(interval)
+        //add to x
+        x++
+        //push next button
+        $("#next").text("NEXT");
+    }
+    // On Click function for answers
+    $(".button").on("click", function(){
+        console.log($(this).html())
+        console.log(Questions[x].CorrectAnswer)
+        console.log(this)
+
+        //if you are right:
+        if ($(this).html() === Questions[x].CorrectAnswer){
+        console.log("win")
+        //add to the wins variable
+        wins++
+        console.log("wins: " + wins)
+        //add a green background to the right answer
+        //add a class
+        $(this).addClass("greenbg")
+        //Call function finish turn
+        finishturn()
+        console.log("x is now " + x)
+        }
+        //if you are wrong 
+        else{
+        console.log("You loose")
+        //add a red background to the selected answer
+        $(this).addClass("redbg")
+        //add green background to the correct answer
+            //find right answer and store it in var correct
+        var correct = Questions[x].Answers.indexOf(Questions[x].CorrectAnswer)
+        //add green background
+        $("#answer" + correct).addClass("greenbg")
+        //Call function finish turn
+        finishturn()
+        console.log("x is now " + x)
+        }
+    })
+
+  //function to reset the game
+    function reset(){
+        $(".button").removeClass("greenbg")
+        $(".button").removeClass("redbg")
+        time = 45
+        $("#stopwatch").html("<h2>" + time + "</h2>");
+        push()
+        timer()
+    }
+
+    $("#next").on("click", function(){
+        reset()
+    })
+
+
+    </script>
+</body>
+</html>
