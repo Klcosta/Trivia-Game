@@ -1,7 +1,41 @@
 .greenbg{
-    background-color: green
+    background-color: #6ad841;
 }
 
 .redbg{
-    background-color: red
+    background-color: #f96262;
+}
+
+.roundedcorners{
+    border-radius: 25px;
+}
+
+.roundedcorners2{
+    border-radius: 23px;
+}
+
+.bordercolor{
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.newheight{
+    height: 0px
+}
+
+.button{
+    height: 100%;
+
+}
+.bluehover:hover {
+    background-color: #3d98f2;
+}
+
+.pointer{
+    cursor: pointer
+}
+
+.normal{
+    cursor: default
 }
