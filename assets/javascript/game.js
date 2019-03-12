@@ -189,7 +189,7 @@
           CorrectAnswer : "Mathew Lyon"
       },
       question37 ={
-          Question : "What two state legislatures passed resulutions against the Alien and Sedition Acts?",
+          Question : "What two state legislatures passed resolutions against the Alien and Sedition Acts?",
           Answers : ["Virginia and Kentucky", "Vermont and North Carolina", "California and Arizona", "Delaware and Maryland"],
           CorrectAnswer : "Virginia and Kentucky"
       },
@@ -254,9 +254,9 @@
           CorrectAnswer : "Treaty of Gent"
       },
       question50 ={
-          Question : "What Treaty ended the War of 1812?",
-          Answers : ["Treaty of Gent", "Treaty of Paris", "Treaty of Toronto", "Treaty of 1815"],
-          CorrectAnswer : "Treaty of Gent"
+          Question : "Where did the Pony Express start and end?",
+          Answers : ["St. Joseph, MO and Sacramento, CA", "St. Louis, MO and San Francisco, CA", "Chicago, IL and Los Angeles, CA", "New York City, NY and Phoenix, AZ"],
+          CorrectAnswer : "St. Joseph, MO and Sacramento, CA"
       },
       question51 ={
           Question : "What state did Jeannette Pickering Rankin, the first congresswoman, represent?",
