@@ -241,7 +241,7 @@
       question47 ={
           Question : "What American persident died after only 40 days in office?",
           Answers : ["William H Harrison", "Geroge Bush", "James Buchanan", "Martin Van Buren"],
-          CorrectAnswer : "William Henry Harrison"
+          CorrectAnswer : "William H Harrison"
       },
       question48 ={
           Question : "What Battle in the War of 1812 lifted Andrew Jackson to prominence?",
@@ -323,6 +323,21 @@
           Answers : ["Mark Twain", "Ernest Hemingway", "Scott Silverstein", "Scott F Fitzgerland"],
           CorrectAnswer : "Mark Twain", 
       },
+      question64 ={ 
+        Question : "What Supreme Court case led to the desegragation of public schools across the United States?",
+        Answers : ["Brown v. Board of Education", "Plessy v. Ferguson", "Jackson v. Mississippi", "Marbury v. Madison"],
+        CorrectAnswer : "Brown v. Board of Education", 
+    },
+    question64 ={ 
+        Question : "What Supreme Court case led to the desegragation of public schools across the United States?",
+        Answers : ["Brown v. Board of Education", "Plessy v. Ferguson", "Jackson v. Mississippi", "Marbury v. Madison"],
+        CorrectAnswer : "Brown v. Board of Education", 
+    },
+    question65 ={ 
+        Question : "What two states were most affected by the Dust Bowl?",
+        Answers : ["Oklahoma and Texas", "Arkansas and Missouri", "New Mexico and Arizona", "Vermont and New Hampshire"],
+        CorrectAnswer : "Oklahoma and Texas", 
+    },
   ]
 
 
