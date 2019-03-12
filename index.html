@@ -6,71 +6,73 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>USHistory-Trivia Game</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.typekit.net/ydb3wyu.css">
+    <link rel="stylesheet" href="https://use.typekit.net/ydb3wyu.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body style="background-image: url(assets/images/flagbackground.jpg)">
     
     <div class="container">
         <div class="row">
-            <div id="titlecol" class="col-5 mb-4 mx-auto mt-3 text-center bg-white py-1 h1 roundedcorners bordercolor">
+            <div id="titlecol" class="col-5 mb-4 mx-auto mt-3 text-center titlefont bg-white py-1 h1 roundedcorners bordercolor">
                 <div id="title">US History</div>
             </div>
         </div>
         <div id="desandsbrow" class="row">
-                <div id="desandsb" class="col-10 mx-auto text-center bg-white py-3 roundedcorners h3 bordercolor">
+                <div id="desandsb" class="col-10 mx-auto text-center bg-white py-3 roundedcorners h3 bordercolor mainfont">
                     <div id="description">This is a test of US History. The questions will span from pre colonial times to the modern day. Choose how many questions you want below and the quiz will start automatically. The questions will not be the same each time you play, so keep going. Good luck.</div>
                     <br>
                     <div class="row">
                         <div class="col-3">
-                            <div id="5questions" class="limit roundedcorners py-1 greenbg w-50 mx-auto bordercolor pointer">5</div>
+                            <div id="5questions" class="limit roundedcorners py-1 greenbg w-75 mx-auto bordercolor pointer mainfont">5</div>
                         </div>
                         <div class="col-3">
-                            <div id="10questions" class="limit roundedcorners py-1 greenbg w-50 mx-auto bordercolor pointer">10</div>
+                            <div id="10questions" class="limit roundedcorners py-1 greenbg w-75 mx-auto bordercolor pointer mainfont">10</div>
                         </div>
                         <div class="col-3">
-                            <div id="20questions" class="limit roundedcorners py-1 greenbg w-50 mx-auto bordercolor pointer">20</div>
+                            <div id="20questions" class="limit roundedcorners py-1 greenbg w-75 mx-auto bordercolor pointer mainfont">20</div>
                         </div>
                         <div class="col-3">
-                            <div id="50questions" class="limit roundedcorners py-1 greenbg w-50 mx-auto bordercolor pointer">50</div>
+                            <div id="50questions" class="limit roundedcorners py-1 greenbg w-75 mx-auto bordercolor pointer mainfont">50</div>
                         </div>
                     </div>
                 </div>
             </div>
         <div class="row">
-            <div id="questioncol" class="col-12 mx-auto text-center bg-white my-3 roundedcorners h3">
+            <div id="questioncol" class="col-12 mx-auto text-center bg-white my-3 roundedcorners h3 mainfont">
                 <div id="question"></div>
             </div>
         </div>
         <div class="row align-middle">
-            <div class="buttoncol col-md-5 col-sm-12 mx-auto text-center bg-white px-0 my-3 mx-1 h3 roundedcorners align-middle">
-                <div id="answer0" class="button pointer roundedcorners2"></div>
+            <div class="buttoncol col-md-5 col-sm-12 mx-auto text-center bg-white px-0 my-3 mx-1 h3 roundedcorners align-middle mainfont">
+                <div id="answer0" class="button pointer my-auto roundedcorners2"></div>
             </div>
             <div class="col-md-1"></div>
-            <div class="buttoncol col-md-5 col-sm-12 mx-auto text-center bg-white px-0 my-3 mx-1 h3 roundedcorners align-middle">
-                <div id="answer1" class="button pointer roundedcorners2"></div>
+            <div class="buttoncol col-md-5 col-sm-12 mx-auto text-center bg-white px-0 my-3 mx-1 h3 roundedcorners align-middle mainfont">
+                <div id="answer1" class="button pointer my-auto roundedcorners2"></div>
             </div>
         </div>
         <div class="row align-middle">
-            <div class="buttoncol col-md-5 col-sm-12 mx-auto text-center bg-white px-0 my-3 mx-1 h3 roundedcorners align-middle">
-                <div id="answer2" class="button pointer roundedcorners2"></div>
+            <div class="buttoncol col-md-5 col-sm-12 mx-auto text-center bg-white px-0 my-3 mx-1 h3 roundedcorners align-middle mainfont">
+                <div id="answer2" class="button pointer my-auto roundedcorners2"></div>
             </div>
             <div class="col-md-1"></div>
-            <div class="buttoncol col-md-5 col-sm-12 mx-auto text-center bg-white px-0 my-3 mx-1 h3 roundedcorners align-middle">
-                <div id="answer3" class="button pointer roundedcorners2"></div>
+            <div class="buttoncol col-md-5 col-sm-12 mx-auto text-center bg-white px-0 my-3 mx-1 h3 roundedcorners align-middle mainfont">
+                <div id="answer3" class="button pointer my-auto roundedcorners2"></div>
             </div>
         </div>
         <div id="timerrow" class="row">
-            <div id= "timercol" class="col-md-2 col-sm-3 mx-auto text-center bg-white my-3 h3 roundedcorners normal pointer">
+            <div id= "timercol" class="col-md-2 col-sm-4 mx-auto text-center bg-white my-3 h3 roundedcorners normal pointer mainfont">
                 <div id="stopwatch"></div>
             </div>
         </div>
         <div class="row">
-            <div id="nextcol" class="col-md-2 col-sm-4 mx-auto text-center bg-white my-3 h3 roundedcorners pointer">
+            <div id="nextcol" class="col-md-2 col-sm-4 mx-auto text-center bg-white my-3 h3 roundedcorners pointer mainfont">
                 <div id="next"></div>
             </div>
         </div>
         <div class="row">
-            <div id="restartcol" class="col-md-3 col-sm-5 mx-auto text-center bg-white my-3 h3 roundedcorners pointer">
+            <div id="restartcol" class="col-md-3 col-sm-5 mx-auto text-center bg-white my-3 h3 roundedcorners pointer mainfont">
                 <div id="restart"></div>
             </div>
         </div>    

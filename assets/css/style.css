@@ -39,3 +39,11 @@
 .normal{
     cursor: default
 }
+
+.titlefont{
+    font-family: teeshirt, sans-serif;
+}
+
+.mainfont{
+    font-family: freight-micro-pro, serif;
+}

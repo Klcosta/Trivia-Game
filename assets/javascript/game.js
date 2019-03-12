@@ -96,7 +96,7 @@
       question18 = {
           Question : "What natural landmark defined the Proclamation Line of 1763?",
           Answers : ["The Appalachians", "The Mississippi River", "The Ohio River", "The Catskills"],
-          CorrectAnswer : "The Appalachian Mountains"
+          CorrectAnswer : "The Appalachians"
       },
       question19 = {
           Question : "How many people were put on trial due to the Boston Massacre?",
@@ -325,72 +325,73 @@
       },
   ]
 
-//function to randomize order of questions and answers. 
-function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
-  // Pick a remaining element...
-  randomIndex = Math.floor(Math.random() * currentIndex);
-  currentIndex -= 1;
-  // And swap it with the current element.
-  temporaryValue = array[currentIndex];
-  array[currentIndex] = array[randomIndex];
-  array[randomIndex] = temporaryValue;
-}
-return array;
-}
 
-//Functoin to push question and answer 
-function push(){
-  // Shuffle Answers
-  shuffle(Questions[x].Answers)
-  // Push answers to page
-  $(".button").addClass("bluehover")
-  $("#questioncol").addClass("py-3 bordercolor")
-  $(".buttoncol").addClass("bordercolor")
-  $(".button").addClass("p-2")
-  $("#question").text(Questions[x].Question);
-  $("#answer0").text(Questions[x].Answers[0]);
-  $("#answer1").text(Questions[x].Answers[1]);
-  $("#answer2").text(Questions[x].Answers[2]);
-  $("#answer3").text(Questions[x].Answers[3]);
-  console.log(Questions[x].Question)
-  console.log(Questions[x].Answers)
-  console.log(Questions[x].CorrectAnswer)
+    //FUNCTION TO RANDOMIZE THE ORDER OF QUESTIONS OR ANSWERS. 
+    function shuffle(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+        }
+        return array;
+    }
+//FUNCTIONS
+    //FUNTION TO PUSH QUESTIONS AND ANSWERS TO THE HTML
+    function push(){
+        // Shuffle Answers
+        shuffle(Questions[x].Answers)
+        // Add necessary classes
+        $(".button").addClass("bluehover")
+        $("#questioncol").addClass("py-3 bordercolor")
+        $(".buttoncol").addClass("bordercolor")
+        $(".button").addClass("p-2")
+        // Push answers to page
+        $("#question").text(Questions[x].Question);
+        $("#answer0").text(Questions[x].Answers[0]);
+        $("#answer1").text(Questions[x].Answers[1]);
+        $("#answer2").text(Questions[x].Answers[2]);
+        $("#answer3").text(Questions[x].Answers[3]);
+        console.log(Questions[x].Question)
+        console.log(Questions[x].Answers)
+        console.log(Questions[x].CorrectAnswer)
+    }
 
-}
+    //FUNCTION FOR TIMER
+    // Variables for timer
+    var time = 45
+    var interval;
+    // Function to start timer
+    function timer() {
+            clearInterval(interval);
+            interval = setInterval(decrement, 1000);
+        }
+        //  The lessen Function
+    function decrement() {
+        //Decrease time by one
+        time--;
+        // Display it
+        $("#stopwatch").text(time);
+        //  When you time = 0
+        if (time === 0) {
+            //add green background to the correct answer
+            //find right answer and store it in var correct
+            var correct = Questions[x].Answers.indexOf(Questions[x].CorrectAnswer)
+            console.log(Questions[x].Answers)
+            console.log(correct)
+            //add green background
+            $("#answer" + correct).addClass("greenbg")
+            // clearInterval(interval);
+            finishturn()
+        }
+    }
 
-// Variables for timer
-var time = 45
-var interval;
-// Function to start timer
-function timer() {
-    clearInterval(interval);
-    interval = setInterval(decrement, 1000);
-}
-//  The lessen Function
-function decrement() {
-//  Decrease time by one
-    time--;
-//  Display it
-    $("#stopwatch").text(time);
-//  When you time = 0
-    if (time === 0) {
-//add green background to the correct answer
-    //find right answer and store it in var correct
-    var correct = Questions[x].Answers.indexOf(Questions[x].CorrectAnswer)
-    console.log(Questions[x].Answers)
-    console.log(correct)
-  //add green background
-  $("#answer" + correct).addClass("greenbg")
-  // clearInterval(interval);
-  // console.log("Time Up!");
-  finishturn()
-}
-}
-
-//function to start and restart game
+//FUNCTION TO START THE GAME
 function start(){
   console.log("startgame")
   shuffle(Questions)
@@ -410,131 +411,130 @@ function start(){
   timer()
 }
 
-//buttons to start the game
-$("#5questions").on("click", function(){
-  limit = 5
-  start()
-})
-$("#10questions").on("click", function(){
-  limit = 10
-  start()
-})
-$("#20questions").on("click", function(){
-  limit = 20
-  start()
-})
-$("#50questions").on("click", function(){
-  limit = 50
-  start()
-})
-// Run timer Function. 
-// timer()
-
-// Function with things that must happen when you click and option regardless of if you are correct or not. 
+// FUNCTIONS OF THINGS THAT NEED TO HAPPEN WHEN ANSWERS IS CLICKED REGRARDLESS OF THE ANSWER BEING CORRECT OR NOT
 function finishturn(){
-  //stop timer
-  clearInterval(interval)
-  //remove timer
-  $("#stopwatch").empty()
-  $("#timerrow").addClass("newheight")
-  $("#timercol").removeClass("py-2 bordercolor")
-  //remve blue hover
-  $(".button").removeClass("bluehover")
-  //add to x
-  x++
-  console.log("x is now " + x)
-  //push next button
-  $("#next").text("NEXT")
-  $("#nextcol").addClass("py-2 bordercolor")
-  //increase counter by 1
-  counter++
-  console.log("counter is now " + counter)
-  //add to y
-  y++
-  console.log("y: " + y)
-}
-
-// variable to impede you for being allows to push .button when you have already guessed. 
-var y = 1
-
-// On Click function for answers
-$(".button").on("click", function(){
-  console.log("You selected" + $(this).html())
-  // console.log(Questions[x].CorrectAnswer)
-  // console.log(this)
-  if (y === 1){
-  //if you are right:
-  if ($(this).html() === Questions[x].CorrectAnswer){
-  console.log("win")
-  //add to the wins variable
-  wins++
-  console.log("wins: " + wins)
-  //add a green background to the right answer
-  //add a class
-  $(this).addClass("greenbg")
-  //Call function finish turn
-  finishturn()
+    //stop timer
+    clearInterval(interval)
+    //remove timer
+    $("#stopwatch").empty()
+    $("#timerrow").addClass("newheight")
+    $("#timercol").removeClass("py-2 bordercolor")
+    //remve blue hover
+    $(".button").removeClass("bluehover")
+    //add to x
+    x++
+    console.log("x is now " + x)
+    //push next button
+    $("#next").text("NEXT")
+    $("#nextcol").addClass("py-2 bordercolor")
+    //increase counter by 1
+    counter++
+    console.log("counter is now " + counter)
+    //add to y
+    y++
+    console.log("y: " + y)
   }
-  //if you are wrong 
-  else{
-  console.log("You loose")
-  //add a red background to the selected answer
-  $(this).addClass("redbg")
-  //add green background to the correct answer
-      //find right answer and store it in var correct
-  var correct = Questions[x].Answers.indexOf(Questions[x].CorrectAnswer)
-  //add green background
-  $("#answer" + correct).addClass("greenbg")
-  //Call function finish turn
-  finishturn()
-  }}
-})
 
-
-//function to reset the question
+  //FUNCTION TO RESET THE GAME
 function reset(){
-  $(".button").removeClass("greenbg")
-  $(".button").removeClass("redbg")
-  time = 45
-  $("#stopwatch").text(time);
-  $("#timercol").addClass("py-2 bordercolor")
-  push()
-  timer()
-  y = 1
-}
-
-//When you click the next button
-$("#next").on("click", function(){
-  if(counter === limit){
-      console.log("Your Score: " + wins + "/" + counter);
-      $("#question").text("Your Score: " + wins + "/" + counter);
-      $(".button").empty()
-      $(".buttoncol").removeClass("bordercolor")
-      $(".button").removeClass("p-2")
-      counter = 0
-      $("#restart").text("RESTART");
-      $("#restartcol").addClass("py-2 bordercolor");
-      $("#stopwatch").empty()
-      $("#timercol").removeClass("py-2 bordercolor")
-      $("#next").empty()
-      $("#nextcol").removeClass("py-2 bordercolor")
+    $(".button").removeClass("greenbg")
+    $(".button").removeClass("redbg")
+    time = 45
+    $("#stopwatch").text(time);
+    $("#timercol").addClass("py-2 bordercolor")
+    push()
+    timer()
+    y = 1
   }
-  else{
-      reset()
-      $("#next").empty()
-      $("#nextcol").removeClass("py-2 bordercolor")
-  }
-})
 
-//Button to restart the game
-$("#restart").on("click", function(){
-  x = 0
-  counter = 0
-  y = 1
-  $("#restart").empty()
-  $("#restartcol").removeClass("py-2 bordercolor")
-  $(".button").removeClass("greenbg")
-  $(".button").removeClass("redbg")
-  shuffle(Questions)
-  start()
-})
+//GAME
+    //STARTER BUTTONS WITH NUMBER OF QUESIONS
+    $("#5questions").on("click", function(){
+        limit = 5
+        start()
+    })
+    $("#10questions").on("click", function(){
+        limit = 10
+        start()
+    })
+    $("#20questions").on("click", function(){
+        limit = 20
+        start()
+    })
+    $("#50questions").on("click", function(){
+        limit = 50
+        start()
+    })
+
+    //CLICKING ON ANSWERS
+    //variable to impede you from pushing .button when you have already guessed. 
+    var y = 1
+    // On Click function for answers
+    $(".button").on("click", function(){
+        console.log("You selected" + $(this).html())
+        // console.log(Questions[x].CorrectAnswer)
+        // console.log(this)
+        if (y === 1){
+            //if you are right:
+            if ($(this).html() === Questions[x].CorrectAnswer){
+                console.log("win")
+                //add to the wins variable
+                wins++
+                console.log("wins: " + wins)
+                //add a green background to the right answer
+                //add a class
+                $(this).addClass("greenbg")
+                //Call function finish turn
+                finishturn()
+            }
+            //if you are wrong 
+            else{
+                console.log("You loose")
+                //add a red background to the selected answer
+                $(this).addClass("redbg")
+                //add green background to the correct answer
+                //find right answer and store it in var correct
+                var correct = Questions[x].Answers.indexOf(Questions[x].CorrectAnswer)
+                //add green background
+                $("#answer" + correct).addClass("greenbg")
+                //Call function finish turn
+                finishturn()
+            }
+        }
+    })
+
+//CLICKING ON NEXT
+    $("#next").on("click", function(){
+        if(counter === limit){
+            console.log("Your Score: " + wins + "/" + counter);
+            $("#question").text("Your Score: " + wins + "/" + counter);
+            $(".button").empty()
+            $(".buttoncol").removeClass("bordercolor")
+            $(".button").removeClass("p-2")
+            counter = 0
+            $("#restart").text("RESTART");
+            $("#restartcol").addClass("py-2 bordercolor");
+            $("#stopwatch").empty()
+            $("#timercol").removeClass("py-2 bordercolor")
+            $("#next").empty()
+            $("#nextcol").removeClass("py-2 bordercolor")
+        }
+        else{
+            reset()
+            $("#next").empty()
+            $("#nextcol").removeClass("py-2 bordercolor")
+        }
+    })
+
+//CLICKING ON RESTART
+    $("#restart").on("click", function(){
+        x = 0
+        counter = 0
+        y = 1
+        $("#restart").empty()
+        $("#restartcol").removeClass("py-2 bordercolor")
+        $(".button").removeClass("greenbg")
+        $(".button").removeClass("redbg")
+        shuffle(Questions)
+        start()
+    })
