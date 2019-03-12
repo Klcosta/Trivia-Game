@@ -434,7 +434,7 @@ function finishturn(){
     $("#stopwatch").empty()
     $("#timerrow").addClass("newheight")
     $("#timercol").removeClass("py-2 bordercolor")
-    //remve blue hover
+    //remove blue hover
     $(".button").removeClass("bluehover")
     //add to x
     x++
@@ -450,7 +450,7 @@ function finishturn(){
     console.log("y: " + y)
   }
 
-  //FUNCTION TO RESET THE GAME
+  //FUNCTION TO RESET THE GAME (FOR WHEN NEXT IS PRESSED)
 function reset(){
     $(".button").removeClass("greenbg")
     $(".button").removeClass("redbg")
@@ -508,7 +508,7 @@ function reset(){
                 //add a red background to the selected answer
                 $(this).addClass("redbg")
                 //add green background to the correct answer
-                //find right answer and store it in var correct
+                //find location of right answer in Answers array and store it in var correct
                 var correct = Questions[x].Answers.indexOf(Questions[x].CorrectAnswer)
                 //add green background
                 $("#answer" + correct).addClass("greenbg")
@@ -520,22 +520,31 @@ function reset(){
 
 //CLICKING ON NEXT
     $("#next").on("click", function(){
+        //If the game is over
         if(counter === limit){
             console.log("Your Score: " + wins + "/" + counter);
+            //Push Score to screen
             $("#question").text("Your Score: " + wins + "/" + counter);
+            //Empty the screen
             $(".button").empty()
             $(".buttoncol").removeClass("bordercolor")
             $(".button").removeClass("p-2")
+            //make the counter 0
             counter = 0
+            //Push Restart to the screent
             $("#restart").text("RESTART");
+            //Empty the Screen
             $("#restartcol").addClass("py-2 bordercolor");
             $("#stopwatch").empty()
             $("#timercol").removeClass("py-2 bordercolor")
             $("#next").empty()
             $("#nextcol").removeClass("py-2 bordercolor")
         }
+        //If the game is not over
         else{
+            //Reset the game
             reset()
+            //Empty the next button
             $("#next").empty()
             $("#nextcol").removeClass("py-2 bordercolor")
         }
@@ -543,13 +552,19 @@ function reset(){
 
 //CLICKING ON RESTART
     $("#restart").on("click", function(){
+        //Set x equal to 0
         x = 0
+        //Set the counter equal to 0
         counter = 0
+        //Set y equal to 0 
         y = 1
+        //Empty screen and delete red/greem background
         $("#restart").empty()
         $("#restartcol").removeClass("py-2 bordercolor")
         $(".button").removeClass("greenbg")
         $(".button").removeClass("redbg")
+        //Shuffle the questions
         shuffle(Questions)
+        //Start the game
         start()
     })
