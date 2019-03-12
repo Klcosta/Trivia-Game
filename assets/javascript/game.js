@@ -340,7 +340,7 @@
     },
   ]
 
-
+//FUNCTIONS
     //FUNCTION TO RANDOMIZE THE ORDER OF QUESTIONS OR ANSWERS. 
     function shuffle(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;
@@ -356,7 +356,7 @@
         }
         return array;
     }
-//FUNCTIONS
+
     //FUNTION TO PUSH QUESTIONS AND ANSWERS TO THE HTML
     function push(){
         // Shuffle Answers
